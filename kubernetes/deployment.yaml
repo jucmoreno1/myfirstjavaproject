@@ -1,0 +1,28 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  # Tu developero lo vas a reconocer, el nombre de tu microservicio o proyecto
+  name: myfirstjavaproject
+  #Se creo para agrupar logicmamente los PODS
+  namespace: mynamespace
+  labels:
+  # Con este nombre se va ligar a un prooyecto GCP
+    app: myfirstjavaproject
+spec:
+  #Nuùmero de replicas de un POD estàtico
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        # este  tag lleva el nombre de como se ligan para exponerse
+        apps: myfirstjavaproject-service
+    spec:
+      #se duplica tantas imagenes
+      containers:
+      #Se debe de repetir el mismo nombre con el que se va a exponer
+      - name: myfirstjavaproject-service
+      # Imagen creada con la nomenclatura GCP
+        image: gcr.io/gcpcert-272801/myfirstjavaimagen:0.0.1
+        ports: 
+        #Es el puerto con el que puedes acceder al microservicio
+        - containerPort: 8080

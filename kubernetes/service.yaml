@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # nombre con el que lo va a realcionar kubernetes
+  #en el deployment yaml => spec: -> template -> metadata -> label -> apps
+  name: myfirstjavaproject-service
+  #Debe de ser el mismo namespace de pod
+  namespace: mynamespace
+spec:
+  ports:
+    - name: http
+    #mismo puerto del deployment nodePort que esta en
+    # spec: -> template -> spec: -> containers[i] ports -> containerPort, si es mas de uno va con ,
+      port: 8080
+      #Load Balancer, ingress mas restricitivo
+  type: LoadBalancer
+  selector:
+    #nombre del servicio
+    apps: myfirstjavaproject-service
