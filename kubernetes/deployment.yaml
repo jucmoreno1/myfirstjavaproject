@@ -22,7 +22,7 @@ spec:
       #Se debe de repetir el mismo nombre con el que se va a exponer
       - name: myfirstjavaproject-service
       # Imagen creada con la nomenclatura GCP
-        image: gcr.io/gcpcert-272801/myfirstjavaimagen:0.0.1
+        image: gcr.io/gcpcert-272801/myfirstjavaimagen:0.0.1        
         ports: 
         #Es el puerto con el que puedes acceder al microservicio
         - containerPort: 8080
