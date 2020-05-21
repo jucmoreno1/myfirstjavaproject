@@ -8,7 +8,7 @@ class MyfirstjavaprojectApplicationTests {
 
 	@Test
 	void contextLoads() {
-		int var1 = 2;
+		int var1 = 3;
         int var2 = 3;
        
         assert(var1 == var2);
