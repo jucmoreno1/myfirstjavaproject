@@ -1,0 +1,18 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: pocdevopsjc11
+  labels:
+    app: pocdevopsjc11
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        apps: pocdevopsjc11-service
+    spec:
+      containers:
+      - name: pocdevopsjc11-service
+        image: gcr.io/com-poc-ci-cd/pocdevops:1.0.11
+        ports:
+        - containerPort: 8080
