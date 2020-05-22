@@ -1,0 +1,60 @@
+swagger: "2.0"
+info:
+  description: "Documentación oficial de Galileo, módulo Cierre-diario."
+  title: "My first Java msvc"
+  version: "1.0.0"
+host: "myfirstjavamsvc.endpoints.gcpcert-272801.cloud.goog"
+x-google-endpoints:
+- name: "myfirstjavamsvc.endpoints.gcpcert-272801.cloud.goog"
+# Es la IP externa que te arroja el service del kubernete.
+  target: "34.68.82.209"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+schemes:
+# Uncomment the next line if you configure SSL for this API.
+# - "https"
+  - "http"
+paths:
+  "/api/v1":
+    post:
+      description: "Metodo que indica la version de mi api de prueba."
+      #nombre del metodo
+      operationId: "recuperaStatus1"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "JSON indicando la fecha del ultimo cierre"
+          schema:
+            $ref: "#/definitions/objetoGenerico"
+#      parameters:
+#       -
+#          description: '"fechaCierre":{"idEmpresa":"000100000000","idOficina":"0"}'
+#          in: body
+#          name: request
+#          required: true
+#         schema:
+#            $ref: "#/definitions/objetoGenerico"
+#     security:
+#        - api_key: []
+definitions:
+  objetoGenerico:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+  authInfoResponse:
+    properties:
+      id:
+        type: "string"
+      email:
+        type: "string"
+securityDefinitions:
+  # This section configures basic authentication with an API key.
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
+ 

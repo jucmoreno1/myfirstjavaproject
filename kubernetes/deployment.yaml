@@ -19,10 +19,26 @@ spec:
     spec:
       #se duplica tantas imagenes
       containers:
+#     - name: esp
+#        image: gcr.io/endpoints-release/endpoints-runtime:1
+#      args: [
+#            "--http_port=8081",
+#            "--backend=127.0.0.1:8080",
+#            "--service=myfirstjavamsvc.endpoints.gcpcert-272801.cloud.goog",
+#            "--rollout_strategy=managed",
+#          ]
+#        ports:
+#          - containerPort: 8081
       #Se debe de repetir el mismo nombre con el que se va a exponer
       - name: myfirstjavaproject-service
       # Imagen creada con la nomenclatura GCP
-        image: gcr.io/gcpcert-272801/myfirstjavaimagen:0.0.1        
+        image: gcr.io/gcpcert-272801/myfirstjavaimagen:1.0.9
+#        livenessProbe:
+#          httpGet:
+#            path: /msk/monitor-servicios/rest/health/healthCheck
+#            port: 6060
+#          initialDelaySeconds: 60
+#          periodSeconds: 60   
         ports: 
-        #Es el puerto con el que puedes acceder al microservicio
+        # Es el puerto con el que puedes acceder al microservicio
         - containerPort: 8080

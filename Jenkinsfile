@@ -3,7 +3,9 @@ def versionImage = '1.0.'
 def applicationName = 'myfirstjavaproject'
 //Namespace de kubernetes
 def namespace = 'mynamespace'
-def projectGCP = 'gcpcert-272801'
+//def projectGCP = 'gcpcert-272801'
+def projectGCP = 'com-poc-ci-cd'
+
 
 pipeline {
     agent any

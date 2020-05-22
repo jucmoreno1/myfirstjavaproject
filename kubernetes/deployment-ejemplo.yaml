@@ -1,0 +1,36 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: monitor-servicios
+  namespace: galileo-cobranza
+  labels:
+    app: monitor-servicios
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        apps: monitor-servicios-service
+    spec:
+      containers:
+      - name: esp
+        image: gcr.io/endpoints-release/endpoints-runtime:1
+        args: [
+            "--http_port=8081",
+            "--backend=127.0.0.1:6060",
+            "--service=monitor-servicios.endpoints.fintech-desarrollo-mx.cloud.goog",
+            "--rollout_strategy=managed",
+          ]
+        ports:
+          - containerPort: 8081
+      - name: monitor-servicios-service
+        image: gcr.io/fintech-desarrollo-mx/monitor-servicios:development-90
+        livenessProbe:
+          httpGet:
+            path: /msk/monitor-servicios/rest/health/healthCheck
+            port: 6060
+          initialDelaySeconds: 60
+          periodSeconds: 60
+        ports:
+        - containerPort: 6060
+
