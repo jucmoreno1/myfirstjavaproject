@@ -3,9 +3,9 @@ kind: Service
 metadata:
   # nombre con el que lo va a realcionar kubernetes
   #en el deployment yaml => spec: -> template -> metadata -> label -> apps
-  name: myfirstjavaproject-service
+  name: pocdevops-backend-service
   #Debe de ser el mismo namespace de pod
-  namespace: mynamespace
+  namespace: default
 spec:
   ports:
     - name: http
@@ -16,4 +16,4 @@ spec:
   type: LoadBalancer
   selector:
     #nombre del servicio
-    apps: myfirstjavaproject-service
+    apps: pocdevops-backend-service
