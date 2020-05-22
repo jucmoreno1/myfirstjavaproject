@@ -9,15 +9,15 @@ metadata:
   # Con este nombre se va ligar a un prooyecto GCP
     app: myfirstjavaproject
 spec:
-  #Nuùmero de replicas de un POD estàtico
+#Nuùmero de replicas de un POD estàtico
   replicas: 1
   template:
     metadata:
       labels:
-        # este  tag lleva el nombre de como se ligan para exponerse
+# este  tag lleva el nombre de como se ligan para exponerse
         apps: myfirstjavaproject-service
     spec:
-      #se duplica tantas imagenes
+#se duplica tantas imagenes
       containers:
 #     - name: esp
 #        image: gcr.io/endpoints-release/endpoints-runtime:1
@@ -40,5 +40,5 @@ spec:
 #          initialDelaySeconds: 60
 #          periodSeconds: 60   
         ports: 
-        # Es el puerto con el que puedes acceder al microservicio
+# Es el puerto con el que puedes acceder al microservicio
         - containerPort: 8080
