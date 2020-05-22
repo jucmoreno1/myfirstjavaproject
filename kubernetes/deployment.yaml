@@ -1,18 +1,18 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: pocdevops20
+  name: pocdevops-backend
   labels:
-    app: pocdevops20
+    app: pocdevops-backend
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        apps: pocdevops20-service
+        apps: pocdevops-backend-service
     spec:
       containers:
-      - name: pocdevops20-service
+      - name: pocdevops-backend-service
         image: gcr.io/com-poc-ci-cd/myfirstjavaproject:1.0.20
         ports:
         - containerPort: 8080
