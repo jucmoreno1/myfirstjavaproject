@@ -1,44 +1,18 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  # Tu developero lo vas a reconocer, el nombre de tu microservicio o proyecto
-  name: myfirstjavaproject
-  #Se creo para agrupar logicmamente los PODS
-  namespace: mynamespace
+  name: pocdevops
   labels:
-  # Con este nombre se va ligar a un prooyecto GCP
-    app: myfirstjavaproject
+    app: pocdevops
 spec:
-#Nuùmero de replicas de un POD estàtico
   replicas: 1
   template:
     metadata:
       labels:
-# este  tag lleva el nombre de como se ligan para exponerse
-        apps: myfirstjavaproject-service
+        apps: pocdevops-service
     spec:
-#se duplica tantas imagenes
       containers:
-#     - name: esp
-#        image: gcr.io/endpoints-release/endpoints-runtime:1
-#      args: [
-#            "--http_port=8081",
-#            "--backend=127.0.0.1:8080",
-#            "--service=myfirstjavamsvc.endpoints.gcpcert-272801.cloud.goog",
-#            "--rollout_strategy=managed",
-#          ]
-#        ports:
-#          - containerPort: 8081
-#Se debe de repetir el mismo nombre con el que se va a exponer
-      - name: myfirstjavaproject-service
-# Imagen creada con la nomenclatura GCP
-        image: gcr.io/gcpcert-272801/myfirstjavaimagen:1.0.9
-#        livenessProbe:
-#          httpGet:
-#            path: /msk/monitor-servicios/rest/health/healthCheck
-#            port: 6060
-#          initialDelaySeconds: 60
-#          periodSeconds: 60   
-        ports: 
-# Es el puerto con el que puedes acceder al microservicio
+      - name: pocdevops-service
+        image: gcr.io/com-poc-ci-cd/pocdevops:1.0.11
+        ports:
         - containerPort: 8080
