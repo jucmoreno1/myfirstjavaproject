@@ -14,20 +14,24 @@ public class SimpleCORSFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
-        
+
+        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
         response.setHeader("Access-Control-Allow-Credentials", "true");
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "*");
-        response.addHeader("Access-Control-Expose-Headers", "xsrf-token");
-       
-        if ("OPTIONS".equals(request.getMethod())) {
-            response.setStatus(HttpServletResponse.SC_OK);
-        } else { 
-            chain.doFilter(request, response);
+        //response.setHeader("Access-Control-Allow-Headers", "Content-Type, api_key, key, Accept, X-Requested-With, remember-me");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me");
+
+        System.out.println("Datos diferente a OPTIONS (Rest): " + request.getMethod());
+
+        if(request.getMethod().equals("OPTIONS")) {
+            System.out.println("Method = OPTIONS");
+            response.setStatus(200);
+            return;
         }
-     }
+
+        chain.doFilter(req, res);
+    }
 
     @Override
     public void init(FilterConfig filterConfig) {
