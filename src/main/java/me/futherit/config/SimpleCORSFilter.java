@@ -20,7 +20,8 @@ public class SimpleCORSFilter implements Filter {
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
         //response.setHeader("Access-Control-Allow-Headers", "Content-Type, api_key, key, Accept, X-Requested-With, remember-me");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me");
+        //response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me");
+        response.setHeader("Access-Control-Allow-Headers", "*");
 
         System.out.println("Datos diferente a OPTIONS (Rest): " + request.getMethod());
 
