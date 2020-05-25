@@ -27,7 +27,7 @@ public class SimpleCORSFilter implements Filter {
 
         if(request.getMethod().equals("OPTIONS")) {
             System.out.println("Method = OPTIONS");
-            response.setStatus(200);
+            response.setStatus(HttpServletResponse.SC_OK);
             return;
         }
 
